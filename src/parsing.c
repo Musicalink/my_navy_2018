@@ -59,20 +59,22 @@ int check_map(char *path)
     char *buffer;
     int check_value = 14;
     int i = 0;
+    int ret_value = 0;
 
     if (fs_open_file(path) == 84)
         return (84);
     fd = open(path, O_RDONLY);
     buffer = malloc(sizeof(char) * 9);
-    while (buffer != NULL && check_value >= 0 && i <= 4) {
+    while (buffer != NULL && check_value >= 0 && i <= 3) {
         buffer[read(fd, buffer, 8)] = '\0';
         check_value = check_line(check_value, buffer);
         i++;
     }
+    if (check_value != 0 || read(fd, buffer, 8) != 0)
+        ret_value = 84;
+    close(fd);
     free(buffer);
-    if (check_value != 0)
-        return (84);
-    return (0);
+    return (ret_value);
 }
 
 int parsing(int ac, char **av)
