@@ -14,9 +14,6 @@ int main(int ac, char **av)
         return (84);
     my_map = declare_map();
     nmy_map = declare_map();
-    try_map(my_map);
-    printf("\n\n");
-    try_map(nmy_map);
 //    def_pos_map(&my_map, av, ac);
 //    game();
 //    free(my_map);

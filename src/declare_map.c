@@ -9,16 +9,6 @@
 #include <stddef.h>
 //#include "navy.h"
 
-void try_map(char **map)
-{
-    int i = 0;
-
-    while (map[i] != NULL) {
-        printf("%s\n", map[i]);
-        i++;
-    }
-}
-
 char **malloc_tab(int x, int y)
 {
     char **tab = malloc(sizeof(char*) * (y + 1));
