@@ -5,6 +5,9 @@
 ** paul bryche
 */
 
+#include "my.h"
+#include "navy.h"
+
 int my_char_cmp(char c, char *check)
 {
     int i = 0;

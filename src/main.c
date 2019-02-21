@@ -5,18 +5,59 @@
 ** Maxence Carpentier
 */
 
+#include <unistd.h>
+#include "navy.h"
+#include "my.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+
+void print_maps(void)
+{
+    char **enemy_map = static_map(0);
+
+    my_putstr("my positions:\n");
+    for (int i = 0; table[i] != NULL; i++) {
+        my_putstr(table[i]);
+        my_putchar('\n');
+    }
+    my_putstr("\nenemy's positions:\n");
+    for (int i = 0; enemy_map[i] != NULL; i++) {
+        my_putstr(enemy_map[i]);
+        my_putchar('\n');
+    }
+}
+
+void game(int status, pid_t enemy, char **enemy_map)
+{
+    char *s;
+
+    if (enemy_map == NULL) {
+        enemy_map = declare_map();
+        static_map(enemy_map);
+    }
+    print_maps();
+    if (status == 0) {
+        my_putstr("attack: ");
+        s = get_next_line(0);
+        if (s == NULL)
+            exit(84);
+        send_packet(s, enemy);
+    } else {
+        my_putstr("waiting for enemy's attack...\n");
+        static_char('A');
+        static_int(0);
+        static_pid(enemy);
+        signal(SIGUSR1, receive_packet);
+        signal(SIGUSR2, receive_packet);
+    }
+}
+
 int main(int ac, char **av)
 {
-    char **my_map;
-    char **nmy_map;
-
-    if (parsing(ac, av) == 84)
+    if (parsing(ac, av) == 84) {
         return (84);
-    my_map = declare_map();
-    nmy_map = declare_map();
-//    def_pos_map(&my_map, av, ac);
-//    game();
-//    free(my_map);
-//    free(nmy_map);
-    return (0);
+    }
+    table = declare_map();
+    return (launch_game(ac, av));
 }

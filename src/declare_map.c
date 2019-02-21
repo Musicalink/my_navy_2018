@@ -7,41 +7,22 @@
 
 #include <stdlib.h>
 #include <stddef.h>
-//#include "navy.h"
-
-char **malloc_tab(int x, int y)
-{
-    char **tab = malloc(sizeof(char*) * (y + 1));
-    int i = 0;
-
-    if (tab == NULL)
-        return (NULL);
-    while (i < y) {
-        tab[i] = malloc(sizeof(char) * (x + 1));
-        if (tab[i] == NULL)
-            return (NULL);
-        i++;
-    }
-    tab[i] = NULL;
-    return (tab);
-}
+#include "navy.h"
+#include "my.h"
 
 char **declare_map(void)
 {
-    char **map = malloc_tab(8, 8);
-    int y = 0;
-    int x = 0;
-
-    if (map == NULL)
-        return (NULL);
-    while (map[y] != NULL) {
-        while (x < 8) {
-            map[y][x] = '.';
-            x++;
-        }
-        map[y][x] = '\0';
-        y++;
-        x = 0;
-    }
-    return (map);
+    char **tab = malloc(sizeof(char *) * 11);
+    tab[0] = my_strdup(" |A B C D E F G H");
+    tab[1] = my_strdup("-+---------------");
+    tab[2] = my_strdup("1|. . . . . . . .");
+    tab[3] = my_strdup("2|. . . . . . . .");
+    tab[4] = my_strdup("3|. . . . . . . .");
+    tab[5] = my_strdup("4|. . . . . . . .");
+    tab[6] = my_strdup("5|. . . . . . . .");
+    tab[7] = my_strdup("6|. . . . . . . .");
+    tab[8] = my_strdup("7|. . . . . . . .");
+    tab[9] = my_strdup("8|. . . . . . . .");
+    tab[10] = NULL;
+    return (tab);
 }

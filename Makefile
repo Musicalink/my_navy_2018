@@ -12,6 +12,17 @@ LIB_DIR=	$(realpath ./lib/my)
 INC_DIR=	$(realpath ./include)
 
 SRC=		$(SRC_DIR)/main.c\
+			$(SRC_DIR)/static.c\
+			$(SRC_DIR)/connection_func.c\
+			$(SRC_DIR)/packet_handler.c\
+			$(SRC_DIR)/parsing.c\
+			$(SRC_DIR)/def_pos_map.c\
+			$(SRC_DIR)/declare_map.c\
+			$(SRC_DIR)/try_open_file.c\
+			$(SRC_DIR)/get_next_line.c\
+			$(SRC_DIR)/shot_gestionary.c\
+			$(SRC_DIR)/shot_validation.c\
+
 
 LIB=		my
 

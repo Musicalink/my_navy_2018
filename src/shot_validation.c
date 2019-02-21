@@ -5,7 +5,10 @@
 ** paul bryche
 */
 
-void shot_validation(int i, char x, int y)
+#include "my.h"
+#include "navy.h"
+
+int shot_validation(int i, char x, int y)
 {
     char **map = static_map(0);
     int xbis = x - 39;

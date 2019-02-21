@@ -27,7 +27,7 @@ int my_str(char *str, char c)
     return (i);
 }
 
-char *my_strcat(char *stra, char *strb)
+char *gnl_strcat(char *stra, char *strb)
 {
     int size = my_str(stra, '\0') + my_str(strb, '\0');
     char *result = malloc(sizeof(char) * size + 1);
@@ -76,12 +76,12 @@ char *get_next_line(int fd)
 
     if (fd < 0 || buffer == NULL)
         return (NULL);
-    strfnl = my_strcat(save, "\0");
+    strfnl = gnl_strcat(save, "\0");
     size = my_str(strfnl, '\0');
     while (my_str(strfnl, '\n') == size && strfnl != NULL && read_size > 0) {
         read_size = read(fd, buffer, READ_SIZE);
         buffer[read_size] = '\0';
-        strfnl = my_strcat(strfnl, buffer);
+        strfnl = gnl_strcat(strfnl, buffer);
         size = my_str(strfnl, '\0');
     }
     strfnl = get_result(strfnl, &save, my_str(strfnl, '\0'), buffer);

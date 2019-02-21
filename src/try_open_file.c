@@ -10,7 +10,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-//#include "navy.h"
+#include "navy.h"
+#include "my.h"
 
 int is_a_file(char const *filepath)
 {
@@ -24,14 +25,12 @@ int fs_open_file(char const *filepath)
 {
     int fd;
 
-    if (is_a_file(filepath) == 0) {
+    if (is_a_file(filepath) == 0)
         return (84);
-    }
     fd = open(filepath, O_RDONLY);
-    if (fd < 0) {
+    if (fd < 0)
         return (84);
-    } else {
+    else
         close(fd);
-	return (0);
-    }
+    return (0);
 }
