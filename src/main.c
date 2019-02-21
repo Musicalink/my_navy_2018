@@ -40,6 +40,7 @@ void game(int status, pid_t enemy, char **enemy_map)
     if (status == 0) {
         my_putstr("attack: ");
         s = get_next_line(0);
+        static_pid(enemy);
         if (s == NULL)
             exit(84);
         send_packet(s, enemy);
