@@ -18,7 +18,7 @@ char *my_revstr(char *str)
         c = str[i];
         str[i] = str[i2];
         str[i2] = c;
-        i2--;
+        i2 --;
     }
     return (str);
 }

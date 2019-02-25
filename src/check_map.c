@@ -16,7 +16,7 @@ int check_map_positions(int value)
     while (table[y] != NULL) {
         while (tabl[y][x] != '\0') {
             if (tabl[y][x] == c)
-                value --;
+                value--;
             x++;
         }
         y++;
@@ -33,7 +33,7 @@ int check_map(void)
 
     while (counter <= 5) {
         if (check_map_positions(counter) == 0)
-            counter ++;
+            counter++;
         else
             return (84);
     }
