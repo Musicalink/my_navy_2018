@@ -23,5 +23,4 @@ int shot_validation(int i, char x, int y)
         static_map(map);
         return (0);
     }
-    return (84);
-}
+¬}

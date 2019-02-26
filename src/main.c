@@ -32,13 +32,9 @@ int game(int status, pid_t enemy, char **enemy_map)
 {
     char *s;
 
-    if (enemy_map == NULL) {
-        enemy_map = declare_map();
-        static_map(enemy_map);
-    }
-    print_maps();
     if (status == 0) {
-        my_putstr("attack: ");
+        print_maps();
+        my_putstr("\nattack: ");
         s = get_next_line(0);
         static_pid(enemy);
         if (s == NULL)
@@ -61,5 +57,6 @@ int main(int ac, char **av)
         return (84);
     }
     table = declare_map();
+    static_map(declare_map());
     return (launch_game(ac, av));
 }

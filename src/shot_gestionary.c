@@ -32,5 +32,4 @@ int shot_gestionnary(int y, char x)
         table[y][xbis] = 'o';
         return (0);
     }
-    return (84);
 }

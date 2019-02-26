@@ -58,7 +58,7 @@ int is_a_file(char const *filepath);
 
 int fs_open_file(char const *filepath);
 
-void game(int status, pid_t enemy, char **enemy_map);
+int game(int status, pid_t enemy, char **enemy_map);
 
 int my_char_cmp(char c, char *check);
 
@@ -66,7 +66,7 @@ int shot_gestionnary(int y, char x);
 
 int shot_validation(int i, char x, int y);
 
-/**/
+void print_maps(void);
 
 void try_free(char **str);
 
@@ -75,5 +75,7 @@ int my_str(char *str, char c);
 char *get_result(char *str, char **save, int size, char *buffer);
 
 char *get_next_line(int fd);
+
+void end_receiver_turn(char c, int i, int value, char **enemy_map);
 
 #endif
