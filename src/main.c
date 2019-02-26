@@ -28,17 +28,47 @@ void print_maps(void)
     }
 }
 
+int is_the_tir_plutot_bon(char *s)
+{
+    int error = 0;
+
+    if (s == NULL)
+        return (0);
+    else if (my_strlen(s) != 2)
+        return (0);
+    error += (s[0] >= 'A' && s[0] <= 'H') ? 0 : 1;
+    error += (s[1] >= '1' && s[1] <= '8') ? 0 : 1;
+    return ((error == 0) ? 1 : 0);
+}
+
+char *get_next_entry(void)
+{
+    char *s = NULL;
+
+    my_putstr("\nattack: ");
+    s = get_next_line(0);
+
+    if (s == NULL)
+        return (NULL);
+    while (is_the_tir_plutot_bon(s) != 1) {
+        my_putstr("wrong position\nattack: ");
+        s = get_next_line(0);
+        if (s == NULL)
+            return (NULL);
+    }
+    return (s);
+}
+
 int game(int status, pid_t enemy, char **enemy_map)
 {
     char *s;
 
     if (status == 0) {
         print_maps();
-        my_putstr("\nattack: ");
-        s = get_next_line(0);
-        static_pid(enemy);
+        s = get_next_entry();
         if (s == NULL)
             return (84);
+        static_pid(enemy);
         send_packet(s, enemy);
     } else {
         my_putstr("waiting for enemy's attack...\n");
