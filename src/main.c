@@ -28,7 +28,7 @@ void print_maps(void)
     }
 }
 
-void game(int status, pid_t enemy, char **enemy_map)
+int game(int status, pid_t enemy, char **enemy_map)
 {
     char *s;
 
@@ -42,7 +42,7 @@ void game(int status, pid_t enemy, char **enemy_map)
         s = get_next_line(0);
         static_pid(enemy);
         if (s == NULL)
-            exit(84);
+            return (84);
         send_packet(s, enemy);
     } else {
         my_putstr("waiting for enemy's attack...\n");
@@ -52,6 +52,7 @@ void game(int status, pid_t enemy, char **enemy_map)
         signal(SIGUSR1, receive_packet);
         signal(SIGUSR2, receive_packet);
     }
+    return (0);
 }
 
 int main(int ac, char **av)
