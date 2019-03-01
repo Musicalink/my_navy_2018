@@ -24,9 +24,9 @@ void put_boat(int static_pos, int movable_one, int movable_two, int boolean)
 
 void write_pos(char **pos)
 {
-    int static_pos;
-    int one;
-    int two;
+    int static_pos = 0;
+    int one = 0;
+    int two = 0;
 
     for (int i = 0; pos[i] != NULL; i++) {
         if (pos[i][2] == pos[i][5]) {

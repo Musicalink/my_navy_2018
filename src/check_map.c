@@ -15,8 +15,7 @@ int check_map_positions(int value)
 
     while (table[y] != NULL) {
         while (tabl[y][x] != '\0') {
-            if (tabl[y][x] == c)
-                value--;
+            value -= (tabl[y][x] == c) ? 1 : 0;
             x++;
         }
         y++;

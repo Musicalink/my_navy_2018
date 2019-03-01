@@ -28,7 +28,7 @@ void print_maps(void)
     }
 }
 
-int is_the_tir_plutot_bon(char *s)
+int is_shot_validate(char *s)
 {
     int error = 0;
 
@@ -50,7 +50,7 @@ char *get_next_entry(void)
 
     if (s == NULL)
         return (NULL);
-    while (is_the_tir_plutot_bon(s) != 1) {
+    while (is_shot_validate(s) != 1) {
         my_putstr("wrong position\nattack: ");
         s = get_next_line(0);
         if (s == NULL)
@@ -83,9 +83,8 @@ int game(int status, pid_t enemy, char **enemy_map)
 
 int main(int ac, char **av)
 {
-    if (parsing(ac, av) == 84) {
+    if (parsing(ac, av) == 84)
         return (84);
-    }
     table = declare_map();
     static_map(declare_map());
     return (launch_game(ac, av));

@@ -44,15 +44,13 @@ int launch_game(int ac, char **av)
         act.sa_sigaction = &guest;
         act.sa_flags = SA_SIGINFO;
         kill(my_atoi(av[1]), SIGUSR1);
-        if (sigaction(SIGUSR1, &act, NULL) < 0)
-            my_putstr("ouhlala\n");
+        sigaction(SIGUSR1, &act, NULL);
     } else {
         def_pos_map(av[1]);
         my_putstr("waiting for enemy connection...\n");
         act.sa_sigaction = &host;
         act.sa_flags = SA_SIGINFO;
-        if (sigaction(SIGUSR1, &act, NULL) < 0)
-            my_putstr("ouhlala\n");
+        sigaction(SIGUSR1, &act, NULL);
     }
     while (42)
         pause();
