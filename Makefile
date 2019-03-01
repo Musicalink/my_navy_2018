@@ -21,8 +21,6 @@ SRC=		$(SRC_DIR)/main.c\
 			$(SRC_DIR)/try_open_file.c\
 			$(SRC_DIR)/get_next_line.c\
 			$(SRC_DIR)/shot_gestionary.c\
-			$(SRC_DIR)/shot_validation.c\
-
 
 LIB=		my
 
