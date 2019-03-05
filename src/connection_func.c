@@ -21,7 +21,7 @@ void host(int sig, siginfo_t *siginfo, void *context)
 
 void guest(int sig, siginfo_t *siginfo, void *context)
 {
-    my_putstr("successfully connected\n");
+    my_putstr("successfully connected\n\n");
     print_maps();
     game(1, siginfo->si_pid, NULL);
 }
